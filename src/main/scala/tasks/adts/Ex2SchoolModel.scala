@@ -124,8 +124,8 @@ object SchoolModel:
     extension (school: School)
       def courses: Sequence[String] = school.map((_, course) => course).distinct()
       def teachers: Sequence[String] = school.map((teacher, _) => teacher).distinct()
-      def setTeacherToCourse(teacher: Teacher, course: Course): School = ???
-      def coursesOfATeacher(teacher: Teacher): Sequence[Course] = ???
+      def setTeacherToCourse(teacher: Teacher, course: Course): School = school.concat(Cons((teacher, course), Nil()))
+      def coursesOfATeacher(teacher: Teacher): Sequence[Course] = school.filter((t,c) => t == teacher).flatMap((t,c) => Cons(c, Nil()))
       def hasTeacher(name: String): Boolean = ???
       def hasCourse(name: String): Boolean = ???
 @main def examples(): Unit =
