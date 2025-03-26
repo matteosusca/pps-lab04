@@ -127,7 +127,7 @@ object SchoolModel:
       def setTeacherToCourse(teacher: Teacher, course: Course): School = school.concat(Cons((teacher, course), Nil()))
       def coursesOfATeacher(teacher: Teacher): Sequence[Course] = school.filter((t,c) => t == teacher).flatMap((t,c) => Cons(c, Nil()))
       def hasTeacher(name: String): Boolean = school.teachers.filter(_ == name) != Nil()
-      def hasCourse(name: String): Boolean = ???
+      def hasCourse(name: String): Boolean = school.courses.filter(_ == name) != Nil()
 @main def examples(): Unit =
   import SchoolModel.BasicSchoolModule.*
   val school = emptySchool
