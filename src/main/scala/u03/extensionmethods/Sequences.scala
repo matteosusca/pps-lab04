@@ -33,6 +33,10 @@ object Sequences:
       def concat(other: Sequence[A]): Sequence[A] = l match
         case Cons(h, t) => Cons(h, t.concat(other))
         case Nil()      => other
+        
+      def distinct(): Sequence[A] = l match
+        case Cons(h, t) => Cons(h, t.filter(_ != h).distinct())
+        case Nil()      => Nil()
 
 
     def of[A](n: Int, a: A): Sequence[A] =
