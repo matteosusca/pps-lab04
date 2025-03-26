@@ -125,7 +125,7 @@ object SchoolModel:
     def emptySchool: School = SchoolImpl(Nil(), Nil(), Nil())
 
     extension (school: School)
-      def courses: Sequence[String] = ???
+      def courses: Sequence[String] = school.courses
       def teachers: Sequence[String] = ???
       def setTeacherToCourse(teacher: Teacher, course: Course): School = ???
       def coursesOfATeacher(teacher: Teacher): Sequence[Course] = ???
