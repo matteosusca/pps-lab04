@@ -123,7 +123,7 @@ object SchoolModel:
 
     extension (school: School)
       def courses: Sequence[String] = school.map((_, course) => course).distinct()
-      def teachers: Sequence[String] = ???
+      def teachers: Sequence[String] = school.map((teacher, _) => teacher).distinct()
       def setTeacherToCourse(teacher: Teacher, course: Course): School = ???
       def coursesOfATeacher(teacher: Teacher): Sequence[Course] = ???
       def hasTeacher(name: String): Boolean = ???

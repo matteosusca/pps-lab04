@@ -17,3 +17,7 @@ class SchoolModelTest:
   @Test def testCourses(): Unit =
     val school = schoolModule.emptySchool
     assertEquals(Nil(), school.courses)
+  
+  @Test def testTeachers(): Unit =
+    val school = schoolModule.emptySchool
+    assertEquals(Nil(), school.teachers)
