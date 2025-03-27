@@ -21,12 +21,20 @@ class SchoolModelTest:
   @Test def testCoursesEmpty(): Unit =
     assertEquals(Nil(), emptySchool.courses)
 
+  @Test def testCoursesStandard(): Unit =
+    assertEquals(Cons("Math", Cons("Italian", Nil())), standardSchool.courses)
+
   @Test def testTeachersEmpty(): Unit =
     assertEquals(Nil(), emptySchool.teachers)
+
+  @Test def testTeachersStandard(): Unit =
+    assertEquals(Cons("John", Cons("Alice", Nil())), standardSchool.teachers)
 
   @Test def testSetTeacherToCourse(): Unit =
     val newSchool = emptySchool.setTeacherToCourse(teacher("John"), course("Math"))
     assertEquals(Cons(("John", "Math"), Nil()), newSchool)
+    val newSchool2 = newSchool.setTeacherToCourse(teacher("Alice"), course("Math"))
+    assertEquals(Cons(("John", "Math"), Cons(("Alice", "Math"), Nil())), newSchool2)
     
   @Test def testHasTeacher(): Unit =
     assertTrue(standardSchool.hasTeacher("John"))
