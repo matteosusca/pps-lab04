@@ -38,6 +38,10 @@ object Sequences:
         case Cons(h, t) => Cons(h, t.filter(_ != h).distinct())
         case Nil()      => Nil()
 
+      def foldLeft[B](acc: B)(op: (B, A) => B): B = l match
+        case Cons(h, t) => t.foldLeft(op(acc, h))(op)
+        case _ => acc
+
 
     def of[A](n: Int, a: A): Sequence[A] =
       if (n == 0) then Nil[A]() else Cons(a, of(n - 1, a))
